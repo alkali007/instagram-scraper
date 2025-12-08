@@ -2,10 +2,6 @@
 config/.env
 config/*.env
 
-# ===== DOCKER =====
-.dockerignore
-dockerfile
-
 *.zip
 
 etc/*.deb
