@@ -1,0 +1,117 @@
+{
+    "data": {
+        "user": {
+            "friendship_status": {
+                "following": false,
+                "blocking": false,
+                "is_feed_favorite": false,
+                "outgoing_request": false,
+                "followed_by": false,
+                "incoming_request": false,
+                "is_restricted": false,
+                "is_bestie": false,
+                "muting": false,
+                "is_muting_reel": false
+            },
+            "gating": null,
+            "fbid_v2": "17841400980783798",
+            "is_memorialized": false,
+            "is_private": false,
+            "has_story_archive": null,
+            "is_cannes": false,
+            "is_coppa_enforced": false,
+            "supervision_info": null,
+            "is_regulated_c18": false,
+            "regulated_news_in_locations": [],
+            "bio_links": [
+                {
+                    "image_url": "",
+                    "is_pinned": false,
+                    "link_type": "external",
+                    "lynx_url": "https://l.instagram.com/?u=http%3A%2F%2Flinktr.ee%2Ftiktok%3Futm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnrYrKWIJ1h7XDfE45oiBzpVl9BPYFc_pkWlyE1JgHZ-0mctUhXrqkAlAYrDs_aem_n-X_7xJ4OeaDkeSFhIpujA&e=AT3fOa6Oy0BWe1cQx9PCPmAHp1EgXUvJQ4h-XQWNdNWLoxJ4Nir1Fq1i4nJeUJPQgmbKeGnJSbSbgkvedSgBw-HsPrI0sL3ZZS3O9vka0isWq3KN09kFoek4OA",
+                    "media_accent_color_hex": "",
+                    "media_type": "none",
+                    "title": "",
+                    "url": "http://linktr.ee/tiktok",
+                    "creation_source": ""
+                }
+            ],
+            "linked_fb_info": null,
+            "text_post_app_badge_label": "tiktok",
+            "show_text_post_app_badge": true,
+            "username": "tiktok",
+            "pk": "1523104692",
+            "live_broadcast_visibility": null,
+            "live_broadcast_id": null,
+            "profile_pic_url": "https://instagram.fcgk6-3.fna.fbcdn.net/v/t51.2885-19/473756692_577357275109937_1626634639748069795_n.jpg?stp=dst-jpg_e0_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fcgk6-3.fna.fbcdn.net&_nc_cat=1&_nc_oc=Q6cZ2QEP46OpOEMimK03UoBgO-WImQjdzTrbtgBWZb3CN4ZXI9KFp1jCYbSs5uS83MImCfTZ5k3OvI1uqmlnF--1BqFy&_nc_ohc=cl2LOANDChIQ7kNvwHoNR0n&_nc_gid=9ZefcEU5BFrmHoEKALN6Nw&edm=ALGbJPMBAAAA&ccb=7-5&oh=00_AflTiVWQveJ1wHi4MZk8Jm5VSF11XapjrFKhNjQOuFOCjA&oe=693CB3E8&_nc_sid=7d3ac5",
+            "hd_profile_pic_url_info": {
+                "url": "https://instagram.fcgk6-3.fna.fbcdn.net/v/t51.2885-19/473756692_577357275109937_1626634639748069795_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fcgk6-3.fna.fbcdn.net&_nc_cat=1&_nc_oc=Q6cZ2QEP46OpOEMimK03UoBgO-WImQjdzTrbtgBWZb3CN4ZXI9KFp1jCYbSs5uS83MImCfTZ5k3OvI1uqmlnF--1BqFy&_nc_ohc=cl2LOANDChIQ7kNvwHoNR0n&_nc_gid=9ZefcEU5BFrmHoEKALN6Nw&edm=ALGbJPMBAAAA&ccb=7-5&oh=00_Afn8u4Tlukc9nF0RhkFDRe1g357-yqrCojBUtyAaHxlIbQ&oe=693CB3E8&_nc_sid=7d3ac5"
+            },
+            "is_unpublished": false,
+            "latest_reel_media": 0,
+            "has_profile_pic": null,
+            "profile_pic_genai_tool_info": [],
+            "biography": "it starts with one TikTok",
+            "full_name": "TikTok",
+            "is_verified": true,
+            "show_account_transparency_details": true,
+            "account_type": 2,
+            "follower_count": 25865962,
+            "mutual_followers_count": 0,
+            "profile_context_links_with_user_ids": [],
+            "profile_context_facepile_users": [],
+            "address_street": "",
+            "city_name": "",
+            "is_business": true,
+            "zip": "",
+            "biography_with_entities": {
+                "entities": []
+            },
+            "category": "Digital creator",
+            "should_show_category": true,
+            "is_ring_creator": false,
+            "show_ring_award": false,
+            "ring_creator_metadata": {
+                "profile_background_color": null
+            },
+            "account_badges": [],
+            "ai_agent_type": null,
+            "external_lynx_url": "https://l.instagram.com/?u=http%3A%2F%2Flinktr.ee%2Ftiktok%3Futm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnfXYz7Ln7Y6CZmT7YqEpOZMFuvpaJadYJJCjPEjaaQyMM4pqgd8bB9aSXImI_aem_SoIqLd9k3TV4n46HFlIP7g&e=AT3IcJP--gha6ogXQPcO1g7CcUk3u3jOKqld8l2n6Dn_BeIJkvMwqA2kRGHCEjM2bb02_CpEnkHG4Z-xxjgHB5lZzod3rQdxYPtO9tlApTGuK_Sw1CnIAj32WA",
+            "external_url": "http://linktr.ee/tiktok",
+            "pronouns": [],
+            "transparency_label": null,
+            "transparency_product": null,
+            "hide_creator_marketplace_badge": false,
+            "id": "1523104692",
+            "has_chaining": true,
+            "remove_message_entrypoint": false,
+            "is_embeds_disabled": false,
+            "is_professional_account": null,
+            "following_count": 0,
+            "media_count": 2183,
+            "total_clips_count": 1,
+            "latest_besties_reel_media": 0,
+            "reel_media_seen_timestamp": null
+        },
+        "viewer": {
+            "user": {
+                "pk": "68290869789",
+                "id": "68290869789",
+                "can_see_organic_insights": true,
+                "supervision_info": {
+                    "is_guardian_user": false,
+                    "is_feta_guardian_user": false,
+                    "guardian_hypercard_content": null
+                }
+            }
+        }
+    },
+    "extensions": {
+        "is_final": true,
+        "server_metadata": {
+            "request_start_time_ms": 1765203610702,
+            "time_at_flush_ms": 1765203610961
+        }
+    },
+    "status": "ok"
+}
