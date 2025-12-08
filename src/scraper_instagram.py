@@ -5,7 +5,6 @@ import json
 import requests
 import zipfile
 from dotenv import load_dotenv
-import undetected_chromedriver as uc
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -35,19 +34,25 @@ PROXY_PASS = os.getenv("PROXY_PASS")
 def setup_driver_with_logging():
     mobile_emulation = { "deviceName": "iPhone 12 Pro" }
     
-    # 1. Create the Auth Extension
-    plugin_path = create_proxy_auth_extension(
-        host=PROXY_HOST,
-        port=PROXY_PORT,
-        user=PROXY_USER,
-        password=PROXY_PASS
-    )
-
+    # 2. Initialize Options first
     chrome_options = Options()
 
-    # 2. Load the Proxy Extension
-    chrome_options.add_argument(f"--load-extension={plugin_path}")
+    if PROXY_HOST and PROXY_PORT and PROXY_USER and PROXY_PASS:
+        print(f"✅ Proxy configuration found. Connecting via {PROXY_HOST}...")
     
+        # Create the extension only if variables exist
+        plugin_path = create_proxy_auth_extension(
+            host=PROXY_HOST,
+            port=PROXY_PORT,
+            user=PROXY_USER,
+            password=PROXY_PASS
+            )
+    
+        # Load the extension
+        chrome_options.add_argument(f"--load-extension={plugin_path}")
+    else:
+        print("⚠️  No proxy configuration found. Connecting directly.")
+
     chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
     chrome_options.add_argument("--headless=new")
     chrome_options.add_argument("--no-sandbox")
@@ -596,15 +601,24 @@ def InstagramScraper(username):
                       clean_headers[key] = value
 
               # 2. SEND REQUEST
-              proxy_url = f"http://{PROXY_USER}:{PROXY_PASS}@{PROXY_HOST}:{PROXY_PORT}"
+              # Check if ALL 4 variables are present
+              if PROXY_HOST and PROXY_PORT and PROXY_USER and PROXY_PASS:
+                print(f"✅ Proxy variables found. Routing requests through {PROXY_HOST}")
+    
+                # 2. Construct the Auth URL
+                proxy_url = f"http://{PROXY_USER}:{PROXY_PASS}@{PROXY_HOST}:{PROXY_PORT}"
 
-              # 3. CREATE THE PROXY DICTIONARY
-              proxies = {
-                        "http": proxy_url,
-                        "https": proxy_url
-                        }
+                # 3. Create the Proxy Dictionary
+                proxies = {
+                    "http": proxy_url,
+                    "https": proxy_url
+                    }
 
-              session.proxies.update(proxies)
+                # Update the session to use these proxies
+                session.proxies.update(proxies)
+
+              else:
+                print("⚠️  No proxy configuration found. Using direct connection.")
               
               IPHONE_USER_AGENT = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"
 
@@ -668,10 +682,11 @@ def InstagramScraper(username):
                           data = response.json()
 
                           # Create a unique filename for each request
-                          output_file = f"data/raw/{username}/request_{i}_result.json"
+                          folder_path = f"data/raw/{username}"
+                          os.makedirs(folder_path, exist_ok=True)
 
-                          # Create the folder if it doesn't exist
-                          os.makedirs(os.path.dirname(output_file), exist_ok=True)
+                          output_file = f"{folder_path}/request_{i}_result.json"
+
 
                           with open(output_file, "w", encoding="utf-8") as f:
                               json.dump(data, f, indent=4)

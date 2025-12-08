@@ -1,0 +1,117 @@
+{
+    "data": {
+        "user": {
+            "friendship_status": {
+                "following": false,
+                "blocking": false,
+                "is_feed_favorite": false,
+                "outgoing_request": false,
+                "followed_by": false,
+                "incoming_request": false,
+                "is_restricted": false,
+                "is_bestie": false,
+                "muting": false,
+                "is_muting_reel": false
+            },
+            "gating": null,
+            "fbid_v2": "17841402361711944",
+            "is_memorialized": false,
+            "is_private": false,
+            "has_story_archive": null,
+            "is_cannes": false,
+            "is_coppa_enforced": false,
+            "supervision_info": null,
+            "is_regulated_c18": false,
+            "regulated_news_in_locations": [],
+            "bio_links": [
+                {
+                    "image_url": "",
+                    "is_pinned": false,
+                    "link_type": "external",
+                    "lynx_url": "https://l.instagram.com/?u=https%3A%2F%2Fparagonid.carrd.co%2F%3Futm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnZSTgMIp3LZVRI5697efXfiu1TZsUcUtqGGLRT_ioWBSsohdAHiOzuOJ_wyA_aem_I6TXUah80ukzk5c0yAdLcQ&e=AT1PPC-enXxfWeCgjpEUI3OpLvHhPM-z4ZbSLgjdMzGQQuxgkl67nRBFN833XQKVZBLwi0JAgKWCtN_LunfTWXhk6tQBl6IAXE6qlCdyqg",
+                    "media_accent_color_hex": "",
+                    "media_type": "none",
+                    "title": "Get To Know Our Brands",
+                    "url": "https://paragonid.carrd.co",
+                    "creation_source": ""
+                }
+            ],
+            "linked_fb_info": null,
+            "text_post_app_badge_label": "paragoncorp",
+            "show_text_post_app_badge": true,
+            "username": "paragoncorp",
+            "pk": "2335558723",
+            "live_broadcast_visibility": null,
+            "live_broadcast_id": null,
+            "profile_pic_url": "https://instagram.fbpn2-1.fna.fbcdn.net/v/t51.2885-19/456110000_2133388260394851_192961326844166960_n.jpg?stp=dst-jpg_e0_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fbpn2-1.fna.fbcdn.net&_nc_cat=1&_nc_oc=Q6cZ2QENeCI8URZrwKEblMZie_WEXMVhvVyELLzfxpLxPPyFuZYhHd7b64fXEaL3NFbrdbo&_nc_ohc=DYqOZo9KzdkQ7kNvwEl6uiS&_nc_gid=-8bTEFwxF2uJCC0sI6XNzw&edm=ALGbJPMBAAAA&ccb=7-5&oh=00_Afl86JiGLZDhV9tmRyRHnMhO9YjcOlrDVGxQkdgr0_SzUQ&oe=693CB5F5&_nc_sid=7d3ac5",
+            "hd_profile_pic_url_info": {
+                "url": "https://instagram.fbpn2-1.fna.fbcdn.net/v/t51.2885-19/456110000_2133388260394851_192961326844166960_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fbpn2-1.fna.fbcdn.net&_nc_cat=1&_nc_oc=Q6cZ2QENeCI8URZrwKEblMZie_WEXMVhvVyELLzfxpLxPPyFuZYhHd7b64fXEaL3NFbrdbo&_nc_ohc=DYqOZo9KzdkQ7kNvwEl6uiS&_nc_gid=-8bTEFwxF2uJCC0sI6XNzw&edm=ALGbJPMBAAAA&ccb=7-5&oh=00_AflBF3YfFXuKycatwMiUimim3dGiZe4VRWPpA5eM1q660Q&oe=693CB5F5&_nc_sid=7d3ac5"
+            },
+            "is_unpublished": false,
+            "latest_reel_media": 0,
+            "has_profile_pic": null,
+            "profile_pic_genai_tool_info": [],
+            "biography": "\ud835\ude47\ud835\ude56\ud835\ude67\ud835\ude5c\ud835\ude5a\ud835\ude68\ud835\ude69 \ud835\ude49\ud835\ude56\ud835\ude69\ud835\ude5e\ud835\ude64\ud835\ude63\ud835\ude56\ud835\ude61 \ud835\ude3d\ud835\ude5a\ud835\ude56\ud835\ude6a\ud835\ude69\ud835\ude6e \ud835\ude3e\ud835\ude64\ud835\ude62\ud835\ude65\ud835\ude56\ud835\ude63\ud835\ude6e\nDiscover Our Iconic Brands: Wardah | Make Over | Emina | Kahf | & Explore More \ud83d\udc47\ud83c\udffb\ud83d\udc47\ud83c\udffb\ud83d\udc47\ud83c\udffb",
+            "full_name": "ParagonCorp",
+            "is_verified": true,
+            "show_account_transparency_details": true,
+            "account_type": 2,
+            "follower_count": 584911,
+            "mutual_followers_count": 0,
+            "profile_context_links_with_user_ids": [],
+            "profile_context_facepile_users": [],
+            "address_street": "",
+            "city_name": "",
+            "is_business": true,
+            "zip": "",
+            "biography_with_entities": {
+                "entities": []
+            },
+            "category": "",
+            "should_show_category": false,
+            "is_ring_creator": false,
+            "show_ring_award": false,
+            "ring_creator_metadata": {
+                "profile_background_color": null
+            },
+            "account_badges": [],
+            "ai_agent_type": null,
+            "external_lynx_url": "https://l.instagram.com/?u=https%3A%2F%2Fparagonid.carrd.co%2F%3Futm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnwcY2rMteSsCueMtpmzUX5Gb9u-qaMr7Eh9pjc0iTFMoME2lRn-za2A3BHo8_aem_O09TXxs9w_mBzQBsLL_ovg&e=AT2oyjlOgfcu4RpmSjEy6ni1XV3SCa7OwCk6wdan62XnMyxUccb5QopG58UmHE8RADir-M-MgM6BvMXzBvcV3Eqx7RGb9OmKHVPRwmUzoA",
+            "external_url": "https://paragonid.carrd.co",
+            "pronouns": [],
+            "transparency_label": null,
+            "transparency_product": null,
+            "hide_creator_marketplace_badge": false,
+            "id": "2335558723",
+            "has_chaining": true,
+            "remove_message_entrypoint": false,
+            "is_embeds_disabled": false,
+            "is_professional_account": null,
+            "following_count": 77,
+            "media_count": 2628,
+            "total_clips_count": 1,
+            "latest_besties_reel_media": 0,
+            "reel_media_seen_timestamp": null
+        },
+        "viewer": {
+            "user": {
+                "pk": "68290869789",
+                "id": "68290869789",
+                "can_see_organic_insights": true,
+                "supervision_info": {
+                    "is_guardian_user": false,
+                    "is_feta_guardian_user": false,
+                    "guardian_hypercard_content": null
+                }
+            }
+        }
+    },
+    "extensions": {
+        "is_final": true,
+        "server_metadata": {
+            "request_start_time_ms": 1765210697707,
+            "time_at_flush_ms": 1765210697955
+        }
+    },
+    "status": "ok"
+}
