@@ -18,7 +18,7 @@ docker build -t insta-scrape .
 
 **2. Run the container:**
 ```bash
-docker run -d --name insta-scrape-container insta-scrape
+docker run --rm -v $(pwd)/data:/app/data insta-scrape username (example: paragoncorp)
 ```
 
 ### B. How to simulate a real mobile session
