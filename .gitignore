@@ -1,0 +1,11 @@
+# ===== ENVIRONMENT & SECRETS =====
+config/.env
+config/*.env
+config/instagram_cookies.json
+
+# ===== DRIVER & AUTOINSTALLER OUTPUT =====
+etc/
+
+# ===== DOCKER =====
+.dockerignore
+dockerfile

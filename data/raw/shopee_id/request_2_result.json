@@ -1,0 +1,103 @@
+{
+    "data": {
+        "user": {
+            "friendship_status": null,
+            "gating": null,
+            "fbid_v2": "17841400541825791",
+            "is_memorialized": false,
+            "is_private": false,
+            "has_story_archive": null,
+            "is_cannes": false,
+            "is_coppa_enforced": false,
+            "supervision_info": null,
+            "is_regulated_c18": false,
+            "regulated_news_in_locations": [],
+            "bio_links": [
+                {
+                    "image_url": "",
+                    "is_pinned": false,
+                    "link_type": "external",
+                    "lynx_url": "https://l.instagram.com/?u=http%3A%2F%2Flinktr.ee%2Fshopeeidofficial&e=AT3TDi4G71XBrqYV3xDS9uORz0nxeIWUd5OvIJqXUp85r0smrKjGzVrgdzGSeuLMZ4e84qm6yFXLndt_FsD5lOZTU_wrZQ5C",
+                    "media_accent_color_hex": "",
+                    "media_type": "none",
+                    "title": "",
+                    "url": "http://linktr.ee/shopeeidofficial",
+                    "creation_source": ""
+                }
+            ],
+            "linked_fb_info": null,
+            "text_post_app_badge_label": "shopee_id",
+            "show_text_post_app_badge": true,
+            "username": "shopee_id",
+            "pk": "1650642060",
+            "live_broadcast_visibility": null,
+            "live_broadcast_id": null,
+            "profile_pic_url": "https://scontent-sin2-3.cdninstagram.com/v/t51.2885-19/269073272_596620031597726_1561201297823157129_n.jpg?stp=dst-jpg_e0_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby42NTcuYzIifQ&_nc_ht=scontent-sin2-3.cdninstagram.com&_nc_cat=1&_nc_oc=Q6cZ2QGlIRixOGumhnhIJNgTItWYjNMBCZOrECno_5GOl8dCrhby3mU2EhRLrzOxJSS8Oso&_nc_ohc=-4xSRClAKzoQ7kNvwG6idvu&_nc_gid=yxUfMuA9FxfVh07KVB3FmQ&edm=ALGbJPMBAAAA&ccb=7-5&oh=00_AfnGkolfwnpq6GA6P171gNK0qIBDesZvePPumzecX0ccdQ&oe=693C4DA9&_nc_sid=7d3ac5",
+            "hd_profile_pic_url_info": {
+                "url": "https://scontent-sin2-3.cdninstagram.com/v/t51.2885-19/269073272_596620031597726_1561201297823157129_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby42NTcuYzIifQ&_nc_ht=scontent-sin2-3.cdninstagram.com&_nc_cat=1&_nc_oc=Q6cZ2QGlIRixOGumhnhIJNgTItWYjNMBCZOrECno_5GOl8dCrhby3mU2EhRLrzOxJSS8Oso&_nc_ohc=-4xSRClAKzoQ7kNvwG6idvu&_nc_gid=yxUfMuA9FxfVh07KVB3FmQ&edm=ALGbJPMBAAAA&ccb=7-5&oh=00_AfmjvG5iIePzloPihGgvku0VI80D7RVfScA36WoOq7DTBg&oe=693C4DA9&_nc_sid=7d3ac5"
+            },
+            "is_unpublished": false,
+            "latest_reel_media": null,
+            "has_profile_pic": null,
+            "profile_pic_genai_tool_info": [],
+            "biography": "Beli Semua di Shopee, Lebih Hemat Lebih Cepat! \n#ShopeePilihLokal",
+            "full_name": "Shopee Indonesia \ud83c\uddee\ud83c\udde9",
+            "is_verified": true,
+            "show_account_transparency_details": true,
+            "account_type": 2,
+            "follower_count": 8883248,
+            "mutual_followers_count": null,
+            "profile_context_links_with_user_ids": null,
+            "profile_context_facepile_users": null,
+            "address_street": null,
+            "city_name": null,
+            "is_business": false,
+            "zip": null,
+            "biography_with_entities": {
+                "entities": [
+                    {
+                        "hashtag": {
+                            "name": "shopeepilihlokal",
+                            "id": "18223458856037141"
+                        },
+                        "user": null
+                    }
+                ]
+            },
+            "category": "App page",
+            "should_show_category": true,
+            "is_ring_creator": null,
+            "show_ring_award": null,
+            "ring_creator_metadata": null,
+            "account_badges": [],
+            "ai_agent_type": null,
+            "external_lynx_url": "https://l.instagram.com/?u=http%3A%2F%2Flinktr.ee%2Fshopeeidofficial&e=AT2rkAHcIVXJdfV1MIOMP6gaOCGbqqDd7xbx1CrhNa0GHgbff58IbHFKBBIiD_AF-n_WPxhJDBEHgdeIVk870gLkPsQQ51ef",
+            "external_url": "http://linktr.ee/shopeeidofficial",
+            "pronouns": [],
+            "transparency_label": null,
+            "transparency_product": null,
+            "hide_creator_marketplace_badge": false,
+            "id": "1650642060",
+            "has_chaining": null,
+            "remove_message_entrypoint": null,
+            "is_embeds_disabled": false,
+            "is_professional_account": null,
+            "following_count": 32,
+            "media_count": 23133,
+            "total_clips_count": 1,
+            "latest_besties_reel_media": null,
+            "reel_media_seen_timestamp": null
+        },
+        "viewer": {
+            "user": null
+        }
+    },
+    "extensions": {
+        "is_final": true,
+        "server_metadata": {
+            "request_start_time_ms": 1765171960426,
+            "time_at_flush_ms": 1765171960481
+        }
+    },
+    "status": "ok"
+}
