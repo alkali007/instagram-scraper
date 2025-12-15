@@ -31,23 +31,24 @@ PROXY_PORT = os.getenv("PROXY_PORT")
 PROXY_USER = os.getenv("PROXY_USER")
 PROXY_PASS = os.getenv("PROXY_PASS")
 
+
 def setup_driver_with_logging():
-    mobile_emulation = { "deviceName": "iPhone 12 Pro" }
-    
+    mobile_emulation = {"deviceName": "iPhone 12 Pro"}
+
     # 2. Initialize Options first
     chrome_options = Options()
 
     if PROXY_HOST and PROXY_PORT and PROXY_USER and PROXY_PASS:
         print(f"✅ Proxy configuration found. Connecting via {PROXY_HOST}...")
-    
+
         # Create the extension only if variables exist
         plugin_path = create_proxy_auth_extension(
             host=PROXY_HOST,
             port=PROXY_PORT,
             user=PROXY_USER,
             password=PROXY_PASS
-            )
-    
+        )
+
         # Load the extension
         chrome_options.add_argument(f"--load-extension={plugin_path}")
     else:
@@ -63,6 +64,7 @@ def setup_driver_with_logging():
 
     driver = webdriver.Chrome(options=chrome_options)
     return driver
+
 
 def create_proxy_auth_extension(host, port, user, password, scheme='http', plugin_path='proxy_auth_plugin.zip'):
     """
@@ -118,13 +120,14 @@ def create_proxy_auth_extension(host, port, user, password, scheme='http', plugi
                 {{urls: ["<all_urls>"]}},
                 ['blocking']
     );
-   """ 
+   """
 
     with zipfile.ZipFile(plugin_path, 'w') as zp:
         zp.writestr("manifest.json", manifest_json)
         zp.writestr("background.js", background_js)
 
     return os.path.abspath(plugin_path)
+
 
 """def setup_driver_with_logging():
     # 1. Create the Auth Extension
@@ -170,7 +173,8 @@ def get_all_network_requests(driver, target_url_part="graphql/query"):
     Captures ALL network requests matching the target_url_part.
     Returns a list of dictionaries.
     """
-    print(f"Scanning network logs for ALL requests containing: '{target_url_part}' ...")
+    print(
+        f"Scanning network logs for ALL requests containing: '{target_url_part}' ...")
 
     # 1. Get all performance logs
     logs = driver.get_log("performance")
@@ -196,7 +200,8 @@ def get_all_network_requests(driver, target_url_part="graphql/query"):
                     # Store valuable info
                     request_data = {
                         "url": url,
-                        "timestamp": message["params"]["wallTime"], # Time it happened
+                        # Time it happened
+                        "timestamp": message["params"]["wallTime"],
                         "headers": request.get("headers", {}),
                         "payload": payload
                     }
@@ -209,10 +214,12 @@ def get_all_network_requests(driver, target_url_part="graphql/query"):
 
     return captured_requests
 
+
 def human_type(element, text):
     for char in text:
         element.send_keys(char)
         time.sleep(random.uniform(0.05, 0.2))
+
 
 def mobile_swipe_up(driver):
     finger = PointerInput(interaction.POINTER_TOUCH, "finger")
@@ -231,6 +238,7 @@ def mobile_swipe_up(driver):
     actions.pointer_action.pointer_up()
     actions.perform()
     print("Swiped up successfully.")
+
 
 def mobile_tap(driver, element):
     """
@@ -253,11 +261,13 @@ def mobile_tap(driver, element):
     # 4. Perform Tap Sequence
     actions.pointer_action.move_to_location(x, y)
     actions.pointer_action.pointer_down()
-    actions.pointer_action.pause(random.uniform(0.05, 0.15)) # Short pause like a real tap
+    actions.pointer_action.pause(random.uniform(
+        0.05, 0.15))  # Short pause like a real tap
     actions.pointer_action.pointer_up()
 
     actions.perform()
     print(f"Tapped element at ({x}, {y})")
+
 
 def search_user(driver, username):
     wait = WebDriverWait(driver, 15)
@@ -273,7 +283,8 @@ def search_user(driver, username):
     try:
         # 2. TRY FINDING THE INPUT DIRECTLY (Language Independent)
         # We use type='search' because it never changes, unlike placeholder="Search"
-        search_input = wait.until(EC.presence_of_element_located((By.XPATH, "//input[@type='search']")))
+        search_input = wait.until(EC.presence_of_element_located(
+            (By.XPATH, "//input[@type='search']")))
 
         # 3. WAKE UP THE INPUT
         # Sometimes the input is present but "sleeping". We tap it to activate.
@@ -288,11 +299,13 @@ def search_user(driver, username):
         except:
             print("Input hidden, tapping 'Search' label to activate...")
             # Fallback: Click the div/span that says "Search" or has the icon
-            fake_search = driver.find_element(By.XPATH, "//*[contains(text(), 'Search')] | //*[contains(text(), 'Cari')]")
+            fake_search = driver.find_element(
+                By.XPATH, "//*[contains(text(), 'Search')] | //*[contains(text(), 'Cari')]")
             mobile_tap(driver, fake_search)
             time.sleep(1)
             # Re-grab the input now that it should be visible
-            search_input = wait.until(EC.visibility_of_element_located((By.XPATH, "//input[@type='search']")))
+            search_input = wait.until(EC.visibility_of_element_located(
+                (By.XPATH, "//input[@type='search']")))
             mobile_tap(driver, search_input)
 
         # 5. CLEAR AND TYPE
@@ -309,7 +322,8 @@ def search_user(driver, username):
         # 6. CLICK THE RESULT
         # This finds the username text anywhere in the list
         result_xpath = f"//span[contains(text(), '{username}')]"
-        user_result = wait.until(EC.element_to_be_clickable((By.XPATH, result_xpath)))
+        user_result = wait.until(
+            EC.element_to_be_clickable((By.XPATH, result_xpath)))
         mobile_tap(driver, user_result)
         print("Clicked user profile.")
 
@@ -319,6 +333,7 @@ def search_user(driver, username):
         with open("debug_search_fail.html", "w", encoding="utf-8") as f:
             f.write(driver.page_source)
         driver.save_screenshot("debug_search_fail.png")
+
 
 def InstagramScraper(username):
     # 1. Setup Driver
@@ -332,7 +347,8 @@ def InstagramScraper(username):
         # --- COOKIE POPUP HANDLER ---
         try:
             cookie_button = WebDriverWait(driver, 5).until(
-                EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), 'Allow') or contains(text(), 'Accept') or contains(text(), 'Only allow essential cookies')]"))
+                EC.element_to_be_clickable(
+                    (By.XPATH, "//button[contains(text(), 'Allow') or contains(text(), 'Accept') or contains(text(), 'Only allow essential cookies')]"))
             )
             cookie_button.click()
             print("Accepted Cookies Popup.")
@@ -344,7 +360,7 @@ def InstagramScraper(username):
         # NEW LOGIC: CHECK & LOAD SAVED COOKIES
         # =================================================================
         need_to_login = True  # Default to True
-        
+
         if os.path.exists(COOKIE_FILE):
             print(f"Found {COOKIE_FILE}. Attempting to restore session...")
 
@@ -353,13 +369,16 @@ def InstagramScraper(username):
 
             for cookie in cookies:
                 # Cleaning up cookie data for Selenium
-                if 'domain' in cookie: del cookie['domain']
-                try: driver.add_cookie(cookie)
-                except: pass
+                if 'domain' in cookie:
+                    del cookie['domain']
+                try:
+                    driver.add_cookie(cookie)
+                except:
+                    pass
 
             print("Cookies injected. Refreshing page...")
             driver.refresh()
-            time.sleep(5) # Wait for page to reload
+            time.sleep(5)  # Wait for page to reload
 
             # VERIFICATION: Are we logged in?
             if "Log in" not in driver.page_source:
@@ -368,7 +387,7 @@ def InstagramScraper(username):
             else:
                 print(">>> FAIL: Cookies expired. Proceeding to manual login.")
                 need_to_login = True
-        
+
         # =================================================================
         # CONDITIONAL LOGIN EXECUTION
         # =================================================================
@@ -382,7 +401,8 @@ def InstagramScraper(username):
             try:
                 print("Looking for initial Log in button...")
                 login_btn = WebDriverWait(driver, 10).until(
-                    EC.element_to_be_clickable((By.XPATH, "//button[.//span[text()='Log in']]"))
+                    EC.element_to_be_clickable(
+                        (By.XPATH, "//button[.//span[text()='Log in']]"))
                 )
                 login_btn.click()
             except:
@@ -391,7 +411,8 @@ def InstagramScraper(username):
 
             # Input Credentials
             print("Waiting for username field...")
-            username_input = wait.until(EC.presence_of_element_located((By.NAME, "username")))
+            username_input = wait.until(
+                EC.presence_of_element_located((By.NAME, "username")))
 
             # Type Username
             username_input.click()
@@ -407,11 +428,13 @@ def InstagramScraper(username):
             # Click Submit
             try:
                 print("Clicking Submit...")
-                submit_btn = driver.find_element(By.XPATH, "//div[@role='button' and @aria-label='Log in']")
+                submit_btn = driver.find_element(
+                    By.XPATH, "//div[@role='button' and @aria-label='Log in']")
                 submit_btn.click()
             except:
                 # Fallback
-                driver.find_element(By.XPATH, "//button[@type='submit']").click()
+                driver.find_element(
+                    By.XPATH, "//button[@type='submit']").click()
 
             # Wait for Login to process
             print("Waiting for login to complete...")
@@ -429,11 +452,11 @@ def InstagramScraper(username):
         print(f"Current URL: {driver.current_url}")
 
         # Example: Get User Profile
-        #target_profile = f"https://www.instagram.com/{username}/"
-        #driver.get(target_profile)
+        # target_profile = f"https://www.instagram.com/{username}/"
+        # driver.get(target_profile)
 
-        #print("Waiting to load page...")
-        #time.sleep(random.uniform(5, 8))
+        # print("Waiting to load page...")
+        # time.sleep(random.uniform(5, 8))
 
         # -------------------------------------------------------------
         # STUBBORN POPUP HANDLER
@@ -447,36 +470,42 @@ def InstagramScraper(username):
             try:
                 # 1. CHECK IF POPUP EXISTS
                 popup_indicator = WebDriverWait(driver, 3).until(
-                    EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'Not now')] | //*[@aria-label='Close']"))
+                    EC.presence_of_element_located(
+                        (By.XPATH, "//*[contains(text(), 'Not now')] | //*[@aria-label='Close']"))
                 )
                 print(f"Popup detected (Attempt {popup_attempts+1})...")
 
                 # 2. TRY CLICKING "NOT NOW" FIRST
                 try:
                     # Find the button specifically
-                    not_now_btn = driver.find_element(By.XPATH, "//div[@role='button' and contains(., 'Not now')]")
+                    not_now_btn = driver.find_element(
+                        By.XPATH, "//div[@role='button' and contains(., 'Not now')]")
 
                     # Method A: JavaScript Click (The strongest click)
                     driver.execute_script("arguments[0].click();", not_now_btn)
                     print(" > Clicked 'Not now' (JS)...")
-                    time.sleep(1) # Wait to see if it worked
+                    time.sleep(1)  # Wait to see if it worked
 
                     # Method B: If it's still there, try ActionChains (Touch simulation)
                     if "Not now" in driver.page_source:
                         print(" > JS Click didn't work. Trying Touch Action...")
-                        ActionChains(driver).move_to_element(not_now_btn).click().perform()
+                        ActionChains(driver).move_to_element(
+                            not_now_btn).click().perform()
                         time.sleep(1)
 
                 except:
-                    print(" > Could not find 'Not now' button, switching to 'X' button...")
+                    print(
+                        " > Could not find 'Not now' button, switching to 'X' button...")
 
                 # 3. IF "NOT NOW" FAILED, CLICK THE "X" BUTTON
                 # Check if the popup is still there
                 if "Save your login info?" in driver.page_source:
                     try:
                         # The X button usually has aria-label="Close"
-                        close_btn = driver.find_element(By.XPATH, "//*[@aria-label='Close']")
-                        driver.execute_script("arguments[0].click();", close_btn)
+                        close_btn = driver.find_element(
+                            By.XPATH, "//*[@aria-label='Close']")
+                        driver.execute_script(
+                            "arguments[0].click();", close_btn)
                         print(" > Clicked 'X' button...")
                         time.sleep(1)
                     except:
@@ -485,23 +514,24 @@ def InstagramScraper(username):
                 # 4. VERIFY IF GONE
                 if "Save your login info?" not in driver.page_source:
                     print("SUCCESS: Popup is gone!")
-                    break # Exit the loop
+                    break  # Exit the loop
 
             except TimeoutException:
                 print("Popup did not appear (or is already gone).")
                 break
 
             popup_attempts += 1
-            time.sleep(1) # Pause before next retry
+            time.sleep(1)  # Pause before next retry
 
         # -------------------------------------------------------------
         # END OF POPUP HANDLER
         # -------------------------------------------------------------
-        
+
         # A. Find the Element
         # We use the HREF because it's the container that accepts the tap
         explore_btn = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, "//a[@href='/explore/']"))
+            EC.presence_of_element_located(
+                (By.XPATH, "//a[@href='/explore/']"))
         )
 
         # B. Tap it using the Mobile logic
@@ -521,22 +551,26 @@ def InstagramScraper(username):
         # This XPath looks for a <span> tag that contains the EXACT username text.
         # It ignores the gibberish classes.
         try:
-            # XPath explanation: 
+            # XPath explanation:
             # //span[normalize-space()='tiktok'] -> Finds the specific text element
             result_xpath = f"//span[normalize-space()='{username}']"
-    
+
             target_profile = WebDriverWait(driver, 5).until(
                 EC.element_to_be_clickable((By.XPATH, result_xpath))
-                )
-    
+            )
+
             print(f"Found profile for '{username}'. Clicking...")
             target_profile.click()
 
         except Exception as e:
-            print(f"Could not find the specific user '{username}' in the dropdown.")
-            # Fallback: Sometimes clicking the text doesn't work, we need to click the container.
-            # This finds the text, then goes up 3 levels to the main container div
-            driver.find_element(By.XPATH, f"//span[normalize-space()='{username}']/ancestor::div[3]").click()
+            print(
+                f"Could not find the specific user '{username}' in the dropdown.")
+            target_profile = f"https://www.instagram.com/{username}/"
+            driver.get(target_profile)
+
+        print("Waiting to load page...")
+        time.sleep(random.uniform(5, 8))
+        # Fallback: Sometimes clicking the text doesn't work, directly get to url profile page
 
         time.sleep(7)
 
@@ -546,7 +580,7 @@ def InstagramScraper(username):
         driver.refresh()
 
         # 2. Trigger the Network Request
-        time.sleep(5) # Wait for network requests to fire
+        time.sleep(5)  # Wait for network requests to fire
 
         # 3. Extract the Data
         all_data = get_all_network_requests(driver, "graphql/query")
@@ -570,7 +604,7 @@ def InstagramScraper(username):
                 try:
                     # Try to parse payload as JSON to make it readable
                     parsed_payload = json.loads(req['payload'])
-                    #print(json.dumps(parsed_payload, indent=2))
+                    # print(json.dumps(parsed_payload, indent=2))
                 except:
                     # If it's not JSON (e.g., raw string or url-encoded), print as is
                     print(req['payload'])
@@ -582,125 +616,126 @@ def InstagramScraper(username):
         # Assuming 'all_data' is your list from the previous step
         if len(all_data) >= 5:
 
-          # Use a Session for better performance (reuses the connection)
-          session = requests.Session()
+            # Use a Session for better performance (reuses the connection)
+            session = requests.Session()
 
-          print(f"Starting replay of {len(all_data)} requests...")
+            print(f"Starting replay of {len(all_data)} requests...")
 
-          # FIX: Use 'enumerate' to get both the index (i) and the item (raw_request)
-          for i, raw_request in enumerate(all_data):
+            # FIX: Use 'enumerate' to get both the index (i) and the item (raw_request)
+            for i, raw_request in enumerate(all_data):
 
-              print(f"\n--- Processing Request #{i + 1} ---")
-              print(f"URL: {raw_request['url']}")
+                print(f"\n--- Processing Request #{i + 1} ---")
+                print(f"URL: {raw_request['url']}")
 
-              # 1. CLEAN HEADERS
-              clean_headers = {}
-              for key, value in raw_request['headers'].items():
-                  # Remove HTTP/2 headers and length/encoding headers
-                  if not key.startswith(':') and key.lower() not in ['content-length', 'accept-encoding']:
-                      clean_headers[key] = value
+                # 1. CLEAN HEADERS
+                clean_headers = {}
+                for key, value in raw_request['headers'].items():
+                    # Remove HTTP/2 headers and length/encoding headers
+                    if not key.startswith(':') and key.lower() not in ['content-length', 'accept-encoding']:
+                        clean_headers[key] = value
 
-              # 2. SEND REQUEST
-              # Check if ALL 4 variables are present
-              if PROXY_HOST and PROXY_PORT and PROXY_USER and PROXY_PASS:
-                print(f"✅ Proxy variables found. Routing requests through {PROXY_HOST}")
-    
-                # 2. Construct the Auth URL
-                proxy_url = f"http://{PROXY_USER}:{PROXY_PASS}@{PROXY_HOST}:{PROXY_PORT}"
+                # 2. SEND REQUEST
+                # Check if ALL 4 variables are present
+                if PROXY_HOST and PROXY_PORT and PROXY_USER and PROXY_PASS:
+                    print(
+                        f"✅ Proxy variables found. Routing requests through {PROXY_HOST}")
 
-                # 3. Create the Proxy Dictionary
-                proxies = {
-                    "http": proxy_url,
-                    "https": proxy_url
+                    # 2. Construct the Auth URL
+                    proxy_url = f"http://{PROXY_USER}:{PROXY_PASS}@{PROXY_HOST}:{PROXY_PORT}"
+
+                    # 3. Create the Proxy Dictionary
+                    proxies = {
+                        "http": proxy_url,
+                        "https": proxy_url
                     }
 
-                # Update the session to use these proxies
-                session.proxies.update(proxies)
+                    # Update the session to use these proxies
+                    session.proxies.update(proxies)
 
-              else:
-                print("⚠️  No proxy configuration found. Using direct connection.")
-              
-              IPHONE_USER_AGENT = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"
+                else:
+                    print("⚠️  No proxy configuration found. Using direct connection.")
 
-              # B. Load Cookies from File
-              print(f"Loading cookies from {COOKIE_FILE}...")
-              csrf_token = None
+                IPHONE_USER_AGENT = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"
 
-              if os.path.exists(COOKIE_FILE):
-                with open(COOKIE_FILE, "r") as file:
-                  cookies_list = json.load(file)
-        
-                for cookie in cookies_list:
-                    # Add cookie to session
-                    session.cookies.set(
-                        name=cookie['name'],
-                        value=cookie['value'],
-                        domain=cookie['domain'],
-                        path=cookie.get('path', '/')
+                # B. Load Cookies from File
+                print(f"Loading cookies from {COOKIE_FILE}...")
+                csrf_token = None
+
+                if os.path.exists(COOKIE_FILE):
+                    with open(COOKIE_FILE, "r") as file:
+                        cookies_list = json.load(file)
+
+                    for cookie in cookies_list:
+                        # Add cookie to session
+                        session.cookies.set(
+                            name=cookie['name'],
+                            value=cookie['value'],
+                            domain=cookie['domain'],
+                            path=cookie.get('path', '/')
                         )
-        
-                    # Extract CSRF Token (CRITICAL for POST requests)
-                    if cookie['name'] == 'csrftoken':
-                        csrf_token = cookie['value']
-                        print(f"Found CSRF Token: {csrf_token}")
-              else:
-                print("⚠️ Cookie file not found! Request will likely fail.")
 
-              # --- 3. SET HEADERS (Mimic iPhone 12 Pro) ---
-              session.headers.update({
-                'User-Agent': IPHONE_USER_AGENT,
-                'X-IG-App-ID': '936619743392459', # Standard Instagram Web ID
-                'X-ASBD-ID': '129477',
-                'X-IG-WWW-Claim': '0',
-                'X-Requested-With': 'XMLHttpRequest', # Important for API/GraphQL
-                'Referer': 'https://www.instagram.com/',
-                'Accept-Language': 'en-US,en;q=0.9',
-                'Viewport-Width': '390' # iPhone 12 Pro width
+                        # Extract CSRF Token (CRITICAL for POST requests)
+                        if cookie['name'] == 'csrftoken':
+                            csrf_token = cookie['value']
+                            print(f"Found CSRF Token: {csrf_token}")
+                else:
+                    print("⚠️ Cookie file not found! Request will likely fail.")
+
+                # --- 3. SET HEADERS (Mimic iPhone 12 Pro) ---
+                session.headers.update({
+                    'User-Agent': IPHONE_USER_AGENT,
+                    'X-IG-App-ID': '936619743392459',  # Standard Instagram Web ID
+                    'X-ASBD-ID': '129477',
+                    'X-IG-WWW-Claim': '0',
+                    'X-Requested-With': 'XMLHttpRequest',  # Important for API/GraphQL
+                    'Referer': 'https://www.instagram.com/',
+                    'Accept-Language': 'en-US,en;q=0.9',
+                    'Viewport-Width': '390'  # iPhone 12 Pro width
                 })
 
-              # C. Inject CSRF Token into Headers
-              if csrf_token:
-                session.headers.update({'X-CSRFToken': csrf_token})
-              else:
-                print("❌ WARNING: No CSRF Token found. You might need to re-login in Selenium.")
+                # C. Inject CSRF Token into Headers
+                if csrf_token:
+                    session.headers.update({'X-CSRFToken': csrf_token})
+                else:
+                    print(
+                        "❌ WARNING: No CSRF Token found. You might need to re-login in Selenium.")
 
-              try:
-                  response = session.post(
-                      raw_request['url'],
-                      headers=clean_headers,
-                      data=raw_request['payload'],
-                      timeout=30
-                  )
+                try:
+                    response = session.post(
+                        raw_request['url'],
+                        headers=clean_headers,
+                        data=raw_request['payload'],
+                        timeout=30
+                    )
 
-                  print(f"Status: {response.status_code}")
-                  time.sleep(10)
+                    print(f"Status: {response.status_code}")
+                    time.sleep(10)
 
-                  # 3. SAVE JSON
-                  if response.status_code == 200:
-                      try:
-                          # Parse JSON
-                          data = response.json()
+                    # 3. SAVE JSON
+                    if response.status_code == 200:
+                        try:
+                            # Parse JSON
+                            data = response.json()
 
-                          # Create a unique filename for each request
-                          folder_path = f"data/raw/{username}"
-                          os.makedirs(folder_path, exist_ok=True)
+                            # Create a unique filename for each request
+                            folder_path = f"data/raw/{username}"
+                            os.makedirs(folder_path, exist_ok=True)
 
-                          output_file = f"{folder_path}/request_{i}_result.json"
+                            output_file = f"{folder_path}/request_{i}_result.json"
 
+                            with open(output_file, "w", encoding="utf-8") as f:
+                                json.dump(data, f, indent=4)
 
-                          with open(output_file, "w", encoding="utf-8") as f:
-                              json.dump(data, f, indent=4)
+                            print(f"SUCCESS: Saved to '{output_file}'")
 
-                          print(f"SUCCESS: Saved to '{output_file}'")
+                        except json.JSONDecodeError:
+                            print(
+                                "Warning: Request succeeded (200 OK) but response was not JSON.")
+                    else:
+                        print(f"Failed. Response: {response.text[:300]}...")
 
-                      except json.JSONDecodeError:
-                          print("Warning: Request succeeded (200 OK) but response was not JSON.")
-                  else:
-                      print(f"Failed. Response: {response.text[:300]}...")
-              
-
-              except Exception as e:
-                  print(f"Error processing request #{i}: {e}")
+                except Exception as e:
+                    print(f"Error processing request #{i}: {e}")
 
         else:
             print("Not enough data captured (Need at least 5 requests).")
@@ -710,4 +745,4 @@ def InstagramScraper(username):
         driver.save_screenshot(f"ss/{username}_error_final.png")
 
     finally:
-       driver.quit()
+        driver.quit()
